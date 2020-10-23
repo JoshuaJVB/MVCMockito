@@ -1,11 +1,14 @@
 package com.Wozu.MVCMockito.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Ad {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long adminId;       // Actual Admin object     - @OneToOne
     private String category;    // List of Category object - @OneToMany
@@ -14,8 +17,7 @@ public class Ad {
     private String message;
     private String callToAction;
 
-    public Ad(Long id, Long adminId, String category, String tag, String advertiser, String message, String callToAction) {
-        this.id = id;
+    public Ad(Long adminId, String category, String tag, String advertiser, String message, String callToAction) {
         this.adminId = adminId;
         this.category = category;
         this.tag = tag;
@@ -30,10 +32,6 @@ public class Ad {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getAdminId() {

@@ -30,7 +30,7 @@ class AdControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        ad = new Ad(42L, 6L, "trucks", "buying", "Ford RAM", "The 2020 Rangers are Built Ford Tough®", "Get your Ranger today!");
+        ad = new Ad(6L, "trucks", "buying", "Ford RAM", "The 2020 Rangers are Built Ford Tough®", "Get your Ranger today!");
         List<Ad> ads = new ArrayList<>();
         ads.add(ad);
 
