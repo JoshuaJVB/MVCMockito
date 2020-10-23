@@ -1,4 +1,4 @@
-package com.Wozu.MVCMockito.controller;
+package com.Wozu.MVCMockito.service;
 
 import com.Wozu.MVCMockito.model.Ad;
 import com.Wozu.MVCMockito.repo.AdRepo;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Advertising")
 @SpringBootTest(classes = {AdServiceImpl.class})
-class AdControllerTest {
+class AdServiceTest {
     Ad ad;
 
     @Autowired
