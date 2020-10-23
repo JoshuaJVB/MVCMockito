@@ -6,4 +6,4 @@ Ronald: posts: has usersId and commentsId
 Andy: advertising: adminId, commentsId   
 Janine: admin model: postId   
 
-!()[image.png]
+![](image.png)
