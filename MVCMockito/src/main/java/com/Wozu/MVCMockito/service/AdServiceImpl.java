@@ -22,9 +22,7 @@ public class AdServiceImpl implements AdService {
     }
 
     @Override
-    public Ad read(Long id) {
-        return adRepo.findById(id).get();
-    }
+    public Ad read(Long id) { return adRepo.findById(id).orElse(null); }
 
     @Override
     public Iterable<Ad> reads() {
@@ -34,25 +32,33 @@ public class AdServiceImpl implements AdService {
     @Override
     public Ad update(Ad ad, Long id) {
         Optional<Ad> optionalAd = adRepo.findById(id);
-        Ad newAd = optionalAd.get();
+        if (optionalAd.isPresent()) {
+            Ad newAd = optionalAd.get();
 
-        newAd.setAdminId(ad.getAdminId());
-        newAd.setCategory(ad.getCategory());
-        newAd.setTag(ad.getTag());
-        newAd.setAdvertiser(ad.getAdvertiser());
-        newAd.setMessage(ad.getMessage());
-        newAd.setCallToAction(ad.getCallToAction());
+            newAd.setAdminId(ad.getAdminId());
+            newAd.setCategory(ad.getCategory());
+            newAd.setTag(ad.getTag());
+            newAd.setAdvertiser(ad.getAdvertiser());
+            newAd.setMessage(ad.getMessage());
+            newAd.setCallToAction(ad.getCallToAction());
 
-        return adRepo.save(newAd);
+            return adRepo.save(newAd);
+        }
+
+        return null;
     }
 
     @Override
     public Ad delete(Long id) {
         Optional<Ad> optionalAd = adRepo.findById(id);
-        Ad ad = optionalAd.get();
+        if (optionalAd.isPresent()) {
+            Ad ad = optionalAd.get();
 
-        adRepo.delete(ad);
+            adRepo.delete(ad);
 
-        return ad;
+            return ad;
+        }
+
+        return null;
     }
 }
