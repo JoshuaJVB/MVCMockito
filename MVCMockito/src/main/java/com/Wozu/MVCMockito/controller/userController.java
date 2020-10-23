@@ -1,8 +1,7 @@
 package com.Wozu.MVCMockito.controller;
 
 import com.Wozu.MVCMockito.model.User;
-import com.Wozu.MVCMockito.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.Wozu.MVCMockito.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,8 +9,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/user")
 public class userController {
-    @Autowired
-    UserServiceImpl userService;
+
+    private final UserService userService;
+
+    public userController(UserService userService){
+        this.userService = userService;
+    }
 
     //get
     @GetMapping("/get/{id}")
